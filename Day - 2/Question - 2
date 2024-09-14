@@ -29,16 +29,3 @@ INSERT INTO page_likes (user_id, page_id, liked_date) VALUES
 (111, 20001, '2022-04-08 00:00:00'),
 (121, 20045, '2022-03-12 00:00:00'),
 (156, 20001, '2022-07-25 00:00:00');
-
-select p.page_id
-from pages p 
-left join page_likes pl on p.page_id = pl.page_id
-where liked_date is null
-order by p.page_id asc;
-
-select p.page_id
-from pages p 
-left join page_likes pl on p.page_id = pl.page_id
-group by p.page_id
-having count(pl.page_id) = 0
-order by p.page_id asc;

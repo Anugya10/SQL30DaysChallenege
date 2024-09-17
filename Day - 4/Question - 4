@@ -1,5 +1,5 @@
 /* Customer segmentation Problem:
-Write an SQL query to find the average order amount for male and female customers separately return the results with
+Write an SQL query to find the average order amount for male and female customers seperately return the results with
 2 decimals.
 
 We have two tables: customers and orders.
@@ -7,27 +7,28 @@ We have two tables: customers and orders.
 customers table has columns: customer_id, customer_name, age, gender.
 orders table has columns: order_id, customer_id, order_date, total_amount.*/
 
-create table customers (
+create table practice.customers (
     customer_id int primary key,
 	customer_name varchar(255),
 	age int,
 	gender varchar(255)
 );
 
-insert into customers values (1, 'John Doe', 30, 'Male'),
+insert into practice.customers values (1, 'John Doe', 30, 'Male'),
                              (2, 'Jane Smith', 25, 'Female'),
 							  (3, 'Alice Johnson', 35, 'Female'),
 							  (4, 'Bob Brown', 40, 'Male');
-						  
 
-create table orders (
+select * from practice.customers;							  
+
+create table practice.orders (
     order_id int primary key,
 	customer_id int,
 	order_date date,
 	total_amount decimal(10, 2)
 );
 
-insert into orders values (101, 1, '2023-01-15', 150.50),
+insert into practice.orders values (101, 1, '2023-01-15', 150.50),
                           (102, 2, '2022-02-20', 200.25),
 						  (103, 3, '2023-03-10', 180.75),
 						  (104, 4, '2023-04-05', 300.00),
@@ -39,4 +40,16 @@ insert into orders values (101, 1, '2023-01-15', 150.50),
 						  (110, 4, '2024-01-30', 250.60),
 						  (111, 4, '2023-08-30', 250.60);
 
+select * from practice.orders;
+
+select gender, 
+     round(avg(total_amount),2) as total_order_amount
+from practice.customers pc
+     join practice.orders po on pc.customer_id = po.customer_id
+group by gender;
+
+Question asked in IBM technical interview round.
+Feel free to give your solutions and suggestions and practice SQL.
+Follow @Anugya Singhal for more posts like this.
+#SQLChallenge #InterviewQuestions #PracticalQuestions #PracticeSQL #Interviews #Dataanalyst #businessanalyst 
 

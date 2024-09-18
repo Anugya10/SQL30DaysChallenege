@@ -16,8 +16,3 @@ INSERT INTO viewership (device_type, viewership_count) VALUES
 ('laptop', 5500),
 ('tablet', 3500),
 ('phone', 7500);
-
-select 
-   sum(case when device_type = 'laptop' then viewership_count end) as laptop_views,
-   sum(case when device_type = 'tablet' & 'phone' then viewership_count end) as mobile_views
-from viewership;

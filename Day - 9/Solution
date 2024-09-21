@@ -1,0 +1,21 @@
+/* Find Department's Top three salaries in each department.
+A company's executives are interested in seeing who earns the most money in each of the company's departments. 
+A high earner in a department is an employee who has a salary in the top three unique salaries for that department.
+Write a solution to find the employees who are high earners in each of the departments.*/
+
+with CTE as (
+select d.name as department_name, d.Id as department_Id, e.name as employee_name, e.salary as employee_salary,
+dense_rank() over(partition by d.name order by e.salary desc) as Dr
+from employee e
+join department d on e.departmentId = d.id)
+select department_name, employee_name, employee_salary
+from CTE
+where Dr <= 3;
+
+select department_name, employee_name, employee_salary from (
+select d.name as department_name, d.Id as department_Id, e.name as employee_name, e.salary as employee_salary,
+dense_rank() over(partition by d.name order by e.salary desc) as Dr
+from employee e
+join department d on e.departmentId = d.id) as Top3
+where Dr <= 3;
+

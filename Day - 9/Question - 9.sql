@@ -46,22 +46,5 @@ INSERT INTO Employee (id, name, salary, departmentId) VALUES
 (26, 'Steve', 75000, 2),
 (27, 'Tina', 79000, 1);
 
-SELECT * FROM department;
-SELECT * FROM employee;
 
-with CTE as (
-select d.name as department_name, d.Id as department_Id, e.name as employee_name, e.salary as employee_salary,
-dense_rank() over(partition by d.name order by e.salary desc) as Dr
-from employee e
-join department d on e.departmentId = d.id)
-select department_name, employee_name, employee_salary
-from CTE
-where Dr <= 3;
-
-select department_name, employee_name, employee_salary from (
-select d.name as department_name, d.Id as department_Id, e.name as employee_name, e.salary as employee_salary,
-dense_rank() over(partition by d.name order by e.salary desc) as Dr
-from employee e
-join department d on e.departmentId = d.id) as Top3
-where Dr <= 3;
 

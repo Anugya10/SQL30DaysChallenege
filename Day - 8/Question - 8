@@ -19,17 +19,6 @@ INSERT INTO tweets (tweet_id, user_id, msg, tweet_date) VALUES
 (241425, 254, 'If the salary is so competitive why won’t you tell me what it is?', '2022-03-01 00:00:00'),
 (231574, 148, 'I no longer have a manager. I cant be managed', '2022-03-23 00:00:00');
 
-SELECT tweet_count, 
-       COUNT(user_id) AS num_users 
-FROM (
-    SELECT user_id, 
-           COUNT(tweet_id) AS tweet_count, 
-           EXTRACT(YEAR FROM tweet_date) AS year
-    FROM tweets
-    WHERE EXTRACT(YEAR FROM tweet_date) = 2022
-    GROUP BY user_id, EXTRACT(YEAR FROM tweet_date)
-) AS posts
-GROUP BY tweet_count;
 
 
 

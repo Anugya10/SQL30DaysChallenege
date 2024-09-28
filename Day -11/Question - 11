@@ -1,8 +1,8 @@
 -- Amazon Interview Question for enty Business Analyst
 
-/*Question:: Given the reviews table, write a query to retrieve the average star rating for each product, grouped by month. 
+Question:: Given the reviews table, write a query to retrieve the average star rating for each product, grouped by month. 
 The output should display the month as a numerical value, product ID, and average star rating rounded to two decimal places. 
-Sort the output first by month and then by product ID.*/
+Sort the output first by month and then by product ID.
 
 CREATE TABLE reviews (
     review_id INTEGER,
@@ -39,18 +39,4 @@ INSERT INTO reviews (review_id, user_id, submit_date, product_id, stars) VALUES
 (1620, 641, '2023-01-22 00:00:00', 50001, 3),
 (1709, 829, '2023-01-30 00:00:00', 69852, 4);
 
-select * from reviews;
 
-select month(submit_date) as month, 
-product_id, round(avg(stars),2) as average_rating
-       from reviews
-group by month(submit_date), product_id
-order by month(submit_date), product_id;
-
-SELECT 
-	EXTRACT(MONTH FROM submit_date) as month,
-	product_id,
-	ROUND(AVG(stars), 2) as avg_rating
-FROM reviews
-GROUP BY month, product_id
-ORDER BY month, product_id;

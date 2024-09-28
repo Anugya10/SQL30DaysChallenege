@@ -24,16 +24,6 @@ INSERT INTO purchases (purchase_id, user_id, date_of_purchase, product_id, amoun
 (6323, 248, '2024-02-20 00:00:00', 25852, 1500),
 (4718, 578, '2024-02-25 00:00:00', 25852, 6000);
 
--- Solution:
-SELECT user_id,
-    SUM(amount_spent) AS total_spent
-FROM purchases
-WHERE 
-    date_of_purchase >= DATE_FORMAT(CURRENT_DATE - INTERVAL 1 MONTH, '%Y-%m-01') 
-    AND date_of_purchase < CURRENT_DATE
-GROUP BY user_id
-HAVING total_spent > 10000;
-
 /*Question 2: Average Duration of Employee's Service. 
 Given the data on IBM employees, can you find the average duration of service for employees across different departments? 
 The Duration of service is represented as end_date - start_date. If end_date is NULL, consider it as the current date.*/
@@ -67,13 +57,4 @@ INSERT INTO employee_service (employee_id, name, start_date, end_date, departmen
 (118, 'Avery', '2017-11-10', NULL, 'Technology'),
 (119, 'Benjamin', '2016-04-04', NULL, 'Strategy'),
 (120, 'Abigail', '2019-08-30', NULL, 'Management');
-
--- Solution:
-select 
-     department, 
-     round(avg(coalesce(end_date, current_date) - start_date),2) as average_duration 
-from 
-     employee_service
-group by 
-     department;
 

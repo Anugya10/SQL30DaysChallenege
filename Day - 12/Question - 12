@@ -1,10 +1,10 @@
-/* LinkedIn Data Analyst Interview question 
+LinkedIn Data Analyst Interview question 
 
 Assume you're given a table containing job postings from various companies on the LinkedIn platform. 
 Write a query to retrieve the count of companies that have posted duplicate job listings.
 
 Definition:
-Duplicate job listings are defined as two job listings within the same company that share identical titles and descriptions. */
+Duplicate job listings are defined as two job listings within the same company that share identical titles and descriptions. 
 
 CREATE TABLE job_listings (
     job_id INTEGER PRIMARY KEY,
@@ -25,24 +25,4 @@ VALUES
     (890, 123, 'Data Scientist', 'Data scientist analyzes and interprets complex data to help organizations make informed decisions.'),
     (753, 123, 'Data Scientist', 'Data scientist analyzes and interprets complex data to help organizations make informed decisions.');
 
-select * from job_listings;
 
-select 
- count(1) as cnt_company
-from
- (select
- company_id,
- title,
- description,
- count(1) as total_job
- from job_listings
- group by 1, 2, 3
- having count(1) > 1
-)x1;
-
-select count(company_id) as count_of_companies
-from (
-select company_id, title, description, count(company_id) as total_job
-from job_listings
-group by company_id, title, description
-having count(company_id) > 1) as total_job_posting;

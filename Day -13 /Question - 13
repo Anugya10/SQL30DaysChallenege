@@ -1,9 +1,8 @@
--- IBM SQL Interview Questions
+IBM SQL Interview Questions
 
-/* Question 1: Identify IBM's High Capacity Users
+Qestion 1: Identify IBM's High Capacity Users
 Question: Identify users who have made purchases totaling more than $10,000 in the last month from the purchases table. 
-The table contains information about purchases, including the user ID, date of purchase, product ID, and amount spent. */
-
+The table contains information about purchases, including the user ID, date of purchase, product ID, and amount spent. 
 CREATE TABLE purchases (
     purchase_id INT PRIMARY KEY,
     user_id INT,
@@ -24,15 +23,6 @@ INSERT INTO purchases (purchase_id, user_id, date_of_purchase, product_id, amoun
 (6323, 248, '2024-02-20 00:00:00', 25852, 1500),
 (4718, 578, '2024-02-25 00:00:00', 25852, 6000);
 
--- Solution:
-SELECT user_id,
-    SUM(amount_spent) AS total_spent
-FROM purchases
-WHERE 
-    date_of_purchase >= DATE_FORMAT(CURRENT_DATE - INTERVAL 1 MONTH, '%Y-%m-01') 
-    AND date_of_purchase < CURRENT_DATE
-GROUP BY user_id
-HAVING total_spent > 10000;
 
 /*Question 2: Average Duration of Employee's Service. 
 Given the data on IBM employees, can you find the average duration of service for employees across different departments? 
@@ -68,12 +58,4 @@ INSERT INTO employee_service (employee_id, name, start_date, end_date, departmen
 (119, 'Benjamin', '2016-04-04', NULL, 'Strategy'),
 (120, 'Abigail', '2019-08-30', NULL, 'Management');
 
--- Solution:
-select 
-     department, 
-     round(avg(coalesce(end_date, current_date) - start_date),2) as average_duration 
-from 
-     employee_service
-group by 
-     department;
 

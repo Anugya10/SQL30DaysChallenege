@@ -1,8 +1,8 @@
-/*Question: Identify the region with the lowest sales amount for the previous month. 
+Question: Identify the region with the lowest sales amount for the previous month. 
 return region name and total_sale amount.
 -- region and sum sale
 -- filter last month
--- lowest sale region */
+-- lowest sale region 
 
 CREATE TABLE Sale (
  SaleID SERIAL PRIMARY KEY,
@@ -40,23 +40,5 @@ INSERT INTO Sale (Region, Amount, SaleDate) VALUES
 ('East', 5100.00, '2024-02-27'),
 ('West', 7600.00, '2024-02-28');
 
-WITH LastMonthSales AS (
-  SELECT
-    Region,
-    SUM(Amount) AS total_sales
-  FROM
-    Sale
-  WHERE
-    SaleDate >= DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '1 month' 
-    AND SaleDate < DATE_TRUNC('month', CURRENT_DATE)
-  GROUP BY
-    Region
-)
-SELECT 
-  Region,
-  total_sales
-FROM 
-  LastMonthSales
-ORDER BY 
-  total_sales ASC
-LIMIT 1;
+
+ 

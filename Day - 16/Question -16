@@ -1,7 +1,7 @@
--- Zomato Business Analyst interview question 
+ Zomato Business Analyst interview question 
 
-/* Question: How many delayed orders does each delivery partner have, considering the predicted delivery time and 
-the actual delivery time?*/
+Question: How many delayed orders does each delivery partner have, considering the predicted delivery time and 
+the actual delivery time?
 
 CREATE TABLE order_details (
     order_id INT,
@@ -23,13 +23,5 @@ VALUES
     (18, 'Partner B', '2024-02-29 17:15:00', '2024-02-29 18:00:00'),
     (19, 'Partner C', '2024-02-29 18:30:00', '2024-02-29 19:15:00');
 
-	select * from order_details;
-
-select 
-      del_partner, 
-	  count(order_id) as total_delayed_orders
-from order_details
-where 
-     delivery_time > predicted_time
-group by del_partner;
+	
 

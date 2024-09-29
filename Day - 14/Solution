@@ -1,0 +1,26 @@
+Question: Identify the region with the lowest sales amount for the previous month. 
+return region name and total_sale amount.
+-- region and sum sale
+-- filter last month
+-- lowest sale region 
+
+WITH LastMonthSales AS (
+  SELECT
+    Region,
+    SUM(Amount) AS total_sales
+  FROM
+    Sale
+  WHERE
+    SaleDate >= DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '1 month' 
+    AND SaleDate < DATE_TRUNC('month', CURRENT_DATE)
+  GROUP BY
+    Region
+)
+SELECT 
+  Region,
+  total_sales
+FROM 
+  LastMonthSales
+ORDER BY 
+  total_sales ASC
+LIMIT 1;

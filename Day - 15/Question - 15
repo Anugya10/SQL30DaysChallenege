@@ -1,7 +1,7 @@
--- Facebook medium level SQL question for Data Analyst 
+Facebook medium-level SQL question for Data Analyst 
 
-/* Q.1: Identify the top 3 posts with the highest engagement (likes + comments) for each user on a Facebook page. Display 
-the user ID, post ID, engagement count, and rank for each post.*/
+Q.1: Identify the top 3 posts with the highest engagement (likes + comments) for each user on a Facebook page. Display 
+the user ID, post ID, engagement count, and rank for each post.
 
 CREATE TABLE fb_posts (
     post_id INT PRIMARY KEY,
@@ -33,19 +33,9 @@ INSERT INTO fb_posts (post_id, user_id, likes, comments, post_date) VALUES
 (19, 103, 30, 10, '2024-03-16'),
 (20, 101, 60, 20, '2024-03-17');
 
-with rank_post as (
-   select user_id, post_id, sum(likes + comments) as engagement_count,
-   row_number() over(partition by user_id order by sum(likes + comments) desc) as RN,
-   dense_rank() over(partition by user_id order by sum(likes + comments) desc) as DR
-   from fb_posts
-   group by user_id, post_id
-   order by user_id, engagement_count desc)
-select user_id, post_id, engagement_count, DR
-from rank_post
-where RN <= 3;
 
-/*Q.2: Determine the users who have posted more than 2 times in the past week and calculate the total number of likes
-they have received. Return user_id and number of post and no of likes. */
+Q.2: Determine the users who have posted more than 2 times in the past week and calculate the total number of likes
+they have received. Return the user_id, the number of posts, and the number of likes. 
 
 CREATE TABLE posts (
     post_id INT PRIMARY KEY,
@@ -76,19 +66,3 @@ INSERT INTO posts (post_id, user_id, likes, post_date) VALUES
 (19, 103, 30, '2024-02-16'),
 (20, 101, 60, '2024-02-17');
 
-WITH RecentPosts AS (
-  SELECT
-    user_id,
-    COUNT(post_id) AS post_count,
-    SUM(likes) AS total_likes
-  FROM posts
-  WHERE
-    post_date >= CURRENT_DATE - INTERVAL '7 days'
-  GROUP BY user_id
-)
-SELECT
-  user_id,
-  post_count,
-  total_likes
-FROM RecentPosts
-WHERE post_count > 2;

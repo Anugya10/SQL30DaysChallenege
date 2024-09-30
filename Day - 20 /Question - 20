@@ -1,6 +1,6 @@
--- Booking.com Data Analyst interview question
+Booking.com Data Analyst interview question
 
--- Find the top-performing two months by revenue for each hotel for each year. Return hotel_id, year, month, revenue.
+Find the top-performing two months by revenue for each hotel for each year. Return hotel_id, year, month, revenue.
 
 -- Create the hotel_revenue table
 CREATE TABLE hotel_revenue (
@@ -43,21 +43,3 @@ INSERT INTO hotel_revenue (hotel_id, month, year, revenue) VALUES
 (104, 'January', 2023, 15000.75),
 (107, 'February', 2023, 17000.25),
 (106, 'March', 2023, 19000.50);
-
-WITH Ranked_Revenue AS (
-    SELECT 
-        hotel_id, 
-        year, 
-        month, 
-        revenue,
-        ROW_NUMBER() OVER (PARTITION BY hotel_id, year ORDER BY revenue DESC) AS revenue_rank
-    FROM hotel_revenue
-)
-SELECT 
-    hotel_id, 
-    year, 
-    month, 
-    revenue, revenue_rank
-FROM Ranked_Revenue
-WHERE revenue_rank <= 2
-ORDER BY hotel_id, year, revenue_rank;

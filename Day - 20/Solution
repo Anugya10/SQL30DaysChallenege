@@ -1,6 +1,6 @@
--- Booking.com Data Analyst interview question
+Booking.com Data Analyst interview question
 
--- Find the top-performing two months by revenue for each hotel for each year. Return hotel_id, year, month, revenue.
+Find the top-performing two months by revenue for each hotel for each year. Return hotel_id, year, month, revenue.
 
 -- Create the hotel_revenue table
 CREATE TABLE hotel_revenue (

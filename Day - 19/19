@@ -1,5 +1,5 @@
-/*zomato business analyst interview question
-Find city wise customers count who have placed more than three orders in November 2023.*/
+Zomato business analyst interview question
+Question: Find city-wise customers count who have placed more than three orders in November 2023.*/
 
 -- Create the zomato_orders table
 CREATE TABLE zomato_orders(
@@ -41,17 +41,6 @@ INSERT INTO zomato_orders (order_id, customer_id, order_date, price, city) VALUE
 (27, 117, '2023-11-16', 180.75, 'Mumbai'),
 (28, 117, '2023-11-16', 180.75, 'Mumbai');
 
-Select city, count(distinct customer_id) as unique_customer 
-from zomato_orders 
-where order_date between '2023-11-01' 
-  and '2023-11-30' 
-  and customer_id in (
-      select customer_id
-      from zomato_orders
-      where order_date between '2023-11-01' 
-	    and '2023-11-30'
-      group by customer_id
-      having count(order_id) > 3)
-group by city;
+
 
 

@@ -1,5 +1,8 @@
--- SWIGGY BA Interview questions 
+SWIGGY BA Interview question
 
+Question: Which metro city had the highest number of restaurant orders in September 2021?
+Write the SQL query to retrieve the city name and the total count of orders, ordered by the total count of orders in descending order.
+Note: metro cities are 'Delhi', 'Mumbai', 'Bangalore', 'Hyderabad'
 
 -- Create the Table
 CREATE TABLE restaurant_orders (
@@ -32,18 +35,5 @@ VALUES
     ('Pune', 115, 15, '2021-10-28'),
     ('Jaipur', 116, 16, '2021-10-30');
 
-	/*Question: Which metro city had the highest number of restaurant orders in September 2021?
-Write the SQL query to retrieve the city name and the total count of orders, 
-ordered by the total count of orders in descending order.
--- Note metro cites are 'Delhi', 'Mumbai', 'Bangalore', 'Hyderabad'*/
 
 
-select 
-    city, 
-	count(order_id) as total_no_orders
-from restaurant_orders
-where 
-    city in ('Delhi', 'Mumbai', 'Bangalore', 'Hyderabad') 
-    and order_date between '2021-09-01' and '2021-09-30'
-group by city
-order by count(order_id) desc;

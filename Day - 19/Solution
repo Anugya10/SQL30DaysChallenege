@@ -1,5 +1,6 @@
-/*zomato business analyst interview question
-Find city wise customers count who have placed more than three orders in November 2023.*/
+Zomato business analyst interview question
+
+Question: Find city-wise customers count who have placed more than three orders in November 2023.*/
 
 -- Create the zomato_orders table
 CREATE TABLE zomato_orders(

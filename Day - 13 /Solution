@@ -1,8 +1,8 @@
--- IBM SQL Interview Questions
+### IBM SQL Interview Questions
 
-/* Question 1: Identify IBM's High Capacity Users
-Question: Identify users who have made purchases totaling more than $10,000 in the last month from the purchases table. 
-The table contains information about purchases, including the user ID, date of purchase, product ID, and amount spent. */
+## Identify IBM's High Capacity Users
+Question 1: Identify users who have made purchases totaling more than $10,000 in the last month from the purchases table. 
+The table contains information about purchases, including the user ID, date of purchase, product ID, and amount spent. 
 
 -- Solution:
 SELECT user_id,
@@ -14,9 +14,9 @@ WHERE
 GROUP BY user_id
 HAVING total_spent > 10000;
 
-/*Question 2: Average Duration of Employee's Service. 
+Question 2: Average Duration of Employee's Service. 
 Given the data on IBM employees, can you find the average duration of service for employees across different departments? 
-The Duration of service is represented as end_date - start_date. If end_date is NULL, consider it as the current date.*/
+The Duration of service is represented as end_date - start_date. If end_date is NULL, consider it as the current date.
 
 -- Solution:
 select 

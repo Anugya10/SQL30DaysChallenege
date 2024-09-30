@@ -1,6 +1,6 @@
 -- Google Interview Question for DA
 
--- Question: Get the count of distinct students that are not unique.
+Question: Get the count of distinct students that are not unique.
 
 -- Create student table
 CREATE TABLE student_names(
@@ -16,11 +16,5 @@ INSERT INTO student_names (student_id, name) VALUES
 (4, 'RAM'),
 (5, 'ROBERT');
 
-select * from student_names;
 
-select name, unique_name_count from (
-select name, count(name) as unique_name_count
-from student_names
-group by name
-having count(name) = 1) as names;
 

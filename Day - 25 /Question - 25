@@ -1,6 +1,6 @@
-/* Flipkart Data Analyst Interview Questions
+Flipkart Data Analyst Interview Questions
 Question: Write an SQL query to fetch user IDs that have only bought both 'Burger' and 'Cold Drink' items.
-Expected Output Columns: user_id*/
+Expected Output Columns: user_id
 
 -- Create the orders table
 CREATE TABLE orde (
@@ -23,19 +23,3 @@ INSERT INTO orde VALUES
 ('6', 'Cold Drink'),
 ('7', 'Pizza'),
 ('8', 'Burger');
-
--- My Solutions:
-
--- Approach 1
-select user_id, count(distinct item_ordered) as distinct_orders
-from orde
-where item_ordered in ('Burger', 'Cold Drink')
-group by user_id
-having count(distinct item_ordered) = 2;
-
--- -- Approach 2
-select user_id
-from orde
-group by user_id
-having count(distinct item_ordered) = 2
-and sum(case when item_ordered in ('Burger', 'Cold Drink') then 1 else 0 end) = 2;

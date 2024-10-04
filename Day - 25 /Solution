@@ -1,6 +1,6 @@
-/* Flipkart Data Analyst Interview Questions
+Flipkart Data Analyst Interview Questions
 Question: Write an SQL query to fetch user IDs that have only bought both 'Burger' and 'Cold Drink' items.
-Expected Output Columns: user_id*/
+Expected Output Columns: user_id.
 
 -- Create the orders table
 CREATE TABLE orde (

@@ -1,6 +1,6 @@
-/* Flipkart Business Analyst Interview Question
+Flipkart Business Analyst Interview Question
 
-Question: Write a SQL query to calculate the running total revenue for each combination of date and product ID.
+Question: Write an SQL query to calculate the running total revenue for each combination of date and product ID.
 Expected Output Columns: 
 	date, product_id, product_name, revenue, running_total
 	ORDER BY product_id, date ascending */

@@ -1,8 +1,5 @@
-/*Question: Given the employee table with columns EMP_ID and SALARY. 
-Write an SQL query to find all salaries greater than the average salary. Return emp_id and salary.*/
-
--- Dropping the table if it exists and then recreating it
-DROP TABLE IF EXISTS employee;
+Question: Given the employee table with columns EMP_ID and SALARY. 
+Write an SQL query to find all salaries greater than the average salary. Return emp_id and salary.
 
 -- Creating the employee table
 CREATE TABLE employee (

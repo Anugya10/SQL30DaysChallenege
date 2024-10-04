@@ -1,9 +1,9 @@
-/*TCS Data Analyst Interview question
+TCS Data Analyst Interview question
 
-Question: Write a SQL query to retrieve the emp_id, emp_name, and manager_name from the given employee table. 
-It's important to note that managers are also employees in the table.*/
+Question: Write an SQL query to retrieve the emp_id, emp_name, and manager_name from the given employee table. 
+It's important to note that managers are also employees at the table.*/
 
--- Create employees table
+-- Create employees' table
 CREATE TABLE employees (
     emp_id INT PRIMARY KEY,
     emp_name VARCHAR(255),
@@ -11,7 +11,7 @@ CREATE TABLE employees (
     FOREIGN KEY (manager_id) REFERENCES employees(emp_id)
 );
 
--- Inserting records into the employees table
+-- Inserting records into the employees' table
 INSERT INTO employees (emp_id, emp_name, manager_id) VALUES
 (1, 'John Doe', NULL),           -- John Doe is the manager
 (2, 'Jane Smith', 1),            -- Jane Smith reports to John Doe

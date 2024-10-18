@@ -1,6 +1,6 @@
-/*Walmart Data Analyst Interview Question
+Walmart Data Analyst Interview Question
 
-Write a solution to select the product ID, year, quantity, and price for the first year of every product sold.*/
+Write a solution to select the product ID, year, quantity, and price for the first year of every product sold.
 
 CREATE TABLE Saless (
  sale_id INT,

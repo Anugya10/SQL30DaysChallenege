@@ -1,5 +1,5 @@
-/*Write a query to find the highest-selling product for each customer
-Return cx id, product description, and total count of purchase.*/ 
+Write a query to find the highest-selling product for each customer.
+Return customer id, product description, and total count of purchases.
 
 CREATE TABLE walmart_eu (
     invoiceno VARCHAR(255),
@@ -113,17 +113,3 @@ INSERT INTO walmart_eu (invoiceno, stockcode, description, quantity, invoicedate
 ('565233', '23000', 'TRAVEL CARD WALLET TRANSPORT', 1, '2011-09-02', 0.83, NULL, 'United Kingdom'),
 ('559984', '16012', 'FOOD/DRINK SPONGE STICKERS', 50, '2011-07-14', 0.21, 16657, 'United Kingdom');
 
-with rankedproducts as (
-    select 
-	    customerid, description,
-        sum(quantity) as total_purchase,
-        row_number() over (partition by customerid order by sum(quantity) desc) as rownum
-    from walmart_eu
-    where customerid is not null
-    group by customerid, description
-)
-select 
-    customerid, description, total_purchase
-from rankedproducts
-where rownum = 1
-order by total_purchase desc;

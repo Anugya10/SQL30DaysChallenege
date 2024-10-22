@@ -1,6 +1,6 @@
-/*Find the best selling item for each month (no need to separate months by year) where the biggest total invoice was paid. 
-The best selling item is calculated using the formula (unitprice * quantity). 
-Output the month, the description of the item along with the amount paid.*/
+Find the best-selling item for each month (no need to separate months by year) where the biggest total invoice was paid. 
+The best-selling item is calculated using the formula (unitprice * quantity). 
+Output the month, the description of the item along with the amount paid.
 -- month invoice data
 -- group by product desc
 -- revenue price * qty
@@ -119,17 +119,6 @@ INSERT INTO walmart_eu (invoiceno, stockcode, description, quantity, invoicedate
 ('565233', '23000', 'TRAVEL CARD WALLET TRANSPORT', 1, '2011-09-02', 0.83, NULL, 'United Kingdom'),
 ('559984', '16012', 'FOOD/DRINK SPONGE STICKERS', 50, '2011-07-14', 0.21, 16657, 'United Kingdom');
 
-select 
-     month, 
-     description, 
-	 revenue 
-from (
-   select extract (month from invoicedate) as month, 
-          description, 
-		  sum(unitprice * quantity) as revenue,
-   rank() over(partition by extract (month from invoicedate) order by sum(unitprice * quantity) desc) as rn
-   from walmart_eu
-   group by month, description) as subquery
-where rn = 1;
+
 
 

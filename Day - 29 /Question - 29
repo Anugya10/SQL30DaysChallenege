@@ -1,4 +1,4 @@
--- Find the hotel name and their total numbers of weekends bookings sort the data higher number first!
+Find the hotel name and their total number of weekend bookings and sort the data to a higher number first!
 
 CREATE TABLE bookings
                     (
@@ -63,18 +63,4 @@ INSERT INTO bookings (id, hotel_name, booking_date, cust_id, adult, payment_type
 (49, 'Hotel D', '2022-06-19', 1049, 3, 'Credit'),
 (50, 'Hotel E', '2022-06-20', 1050, 1, 'Cash');
 
-select 
-    hotel_name, 
-	count(booking_date) as total_w_bookings
-from bookings
-where extract(dow from booking_date) in (0, 6)
-group by hotel_name
-order by total_w_bookings desc;
 
-select  
-    hotel_name,
-    sum(case 
-            when extract(dow from booking_date) in (0, 6) then 1 else 0 end) as total_w_bookings
-from bookings 
-group by hotel_name
-order by total_w_bookings desc;

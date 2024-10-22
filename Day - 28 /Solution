@@ -1,5 +1,5 @@
-/*Write a query to find the highest-selling product for each customer
-Return cx id, product description, and total count of purchase.*/ 
+Write a query to find the highest-selling product for each customer
+Return customer id, product description, and total count of purchases.
 
 CREATE TABLE walmart_eu (
     invoiceno VARCHAR(255),
